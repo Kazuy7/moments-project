@@ -10,7 +10,7 @@ import { Moment } from 'src/app/Moment';
 export class NewMomentComponent {
   btnText = 'Compartilhar';
 
-  async createHandler(moment: Moment) {
+  async createHandler(moment: Moment) { // Tratando os dados que chegam para fazer a inserção no sistema pelo service(Transformando em formData)
     const formData = new FormData();
 
     formData.append('title', moment.title);

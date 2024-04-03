@@ -9,22 +9,22 @@ import { Moment } from 'src/app/Moment';
   styleUrls: ['./moment-form.component.css']
 })
 export class MomentFormComponent {
-  @Output() onSubmit = new EventEmitter<Moment>();
+  @Output() onSubmit = new EventEmitter<Moment>(); // Emite um evento com os dados do formulário
   @Input() btnText!: string;
 
-  momentForm!: FormGroup;
+  momentForm!: FormGroup; // Declarando o formulário
 
-  ngOnInit(): void {
+  ngOnInit(): void { // Inicializando o formulário
     this.momentForm = new FormGroup({
       id: new FormControl(''),
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]), // Realizando a validação do campo, não pode estar vazio
       description: new FormControl('', [Validators.required]),
       image: new FormControl(''),
     });
   }
 
-  get title() {
-    return this.momentForm.get('title')!;
+  get title() { // Pegando o atributo 'title' do momentForm que foi declarado
+    return this.momentForm.get('title')!; // Esclamação para garantir que o campo vai existir
   }
 
   get description() {
@@ -44,6 +44,6 @@ export class MomentFormComponent {
 
     console.log(this.momentForm.value);
 
-    this.onSubmit.emit(this.momentForm.value);
+    this.onSubmit.emit(this.momentForm.value); // Enviando os dados do formulário para o componente pai pelo onSubmit
   }
 }
